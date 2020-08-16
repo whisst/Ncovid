@@ -1,0 +1,84 @@
+<!-- Styles -->
+<style>
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+
+</style>
+
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv", am4charts.PieChart);
+
+// Add data
+chart.data = [ 
+{
+  "country": "Đà Nẵng",
+  "value": 269
+}, {
+  "country": "Quảng Ngãi",
+  "value": 6
+}, {
+  "country": "Quảng Nam",
+  "value": 74
+}, {
+  "country": "Hà Nội",
+  "value": 6
+}, {
+  "country": "Đắk Lắk",
+  "value": 3
+}, {
+  "country": "HCM",
+  "value": 8
+}, {
+  "country": "Thái Bình",
+  "value": 1
+}, {
+  "country": "Đồng Nai",
+  "value": 2
+}, {
+  "country": "Hải Dương",
+  "value": 3
+}, {
+  "country": "Quảng Trị",
+  "value": 4
+}, {
+  "country": "Bắc Giang",
+  "value": 5
+}, {
+  "country": "Lạng Sơn",
+  "value": 4
+}
+];
+
+// Add and configure Series
+var pieSeries = chart.series.push(new am4charts.PieSeries());
+pieSeries.dataFields.value = "value";
+pieSeries.dataFields.category = "country";
+pieSeries.slices.template.stroke = am4core.color("#fff");
+pieSeries.slices.template.strokeWidth = 2;
+pieSeries.slices.template.strokeOpacity = 1;
+
+// This creates initial animation
+pieSeries.hiddenState.properties.opacity = 1;
+pieSeries.hiddenState.properties.endAngle = -90;
+pieSeries.hiddenState.properties.startAngle = -90;
+
+}); // end am4core.ready()
+</script>
+
+<!-- HTML -->
+<div id="chartdiv"></div>
